@@ -21,4 +21,6 @@ server.on('upgrade', (req, socket, head) =>{
   proxyMap.ws(req, socket, head);
 });
 
-server.listen(process.env?.SERVER_PORT ?? 8080);
+server.listen(process.env?.SERVER_PORT ?? 8080, () => {
+  console.log('server run in', process.env?.SERVER_PORT ?? 8080, 'port');
+});
