@@ -16,7 +16,7 @@ app.post('/objects/*', function(req, res) {
   proxyMap.web(req, res, {});
 });
 
-app.get('/afisha/*', expressHTTPPRoxy(process.env.EVENTS_URL || ''));
+app.get('/events/*', expressHTTPPRoxy(process.env.EVENTS_URL || ''));
 
 // @ts-ignore
 server.on('upgrade', (req, socket, head) =>{
@@ -24,6 +24,6 @@ server.on('upgrade', (req, socket, head) =>{
   proxyMap.ws(req, socket, head);
 });
 
-server.listen(process.env?.SERVER_PORT ?? 8080, () => {
-  console.log('server run in', process.env?.SERVER_PORT ?? 8080, 'port');
+server.listen(process.env?.SERVER_PORT ?? 8000, () => {
+  console.log('server run in', process.env?.SERVER_PORT ?? 8000, 'port');
 });
