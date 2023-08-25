@@ -10,7 +10,7 @@ const app = express();
 const proxyMap = httpProxy.createProxyServer({ target: process.env.MAP_WS_URL, ws: true });
 const server = require('http').createServer(app);
 
-app.post('/map/*', function(req, res) {
+app.post('/objects/*', function(req, res) {
   console.log("proxying POST request", req.url);
   proxyMap.web(req, res, {});
 });
