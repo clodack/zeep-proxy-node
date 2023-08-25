@@ -1,4 +1,5 @@
 import httpProxy from 'http-proxy';
+import expressHTTPPRoxy from 'express-http-proxy';
 import express from 'express';
 
 import { injectEnvFiles } from './envs';
@@ -14,6 +15,8 @@ app.post('/objects/*', function(req, res) {
   console.log("proxying POST request", req.url);
   proxyMap.web(req, res, {});
 });
+
+app.get('/afisha/*', expressHTTPPRoxy(process.env.EVENTS_URL || ''));
 
 // @ts-ignore
 server.on('upgrade', (req, socket, head) =>{
